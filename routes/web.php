@@ -4,6 +4,7 @@ use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\QRformController;
 use App\Http\Controllers\ListingController;
 
 /*
@@ -27,7 +28,8 @@ use App\Http\Controllers\ListingController;
 // destroy - Delete listing
 
 // All Listing
-Route::get('/', [ListingController::class, 'index']);
+// Route::get('/', [ListingController::class, 'index']);
+Route::get('/', [QRformController::class, 'show']);
 
 // Show Create Form
 Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
@@ -48,10 +50,10 @@ Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->mid
 Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
 
 // Single Listing
-Route::get('/listings/{listing}', [ListingController::class, 'show']);
+// Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 // Show Register/Create Form
-Route::get('/register', [UserController::class, 'create'])->middleware('guest');
+Route::get('/register', [UserController::class, 'create'])->middleware('auth');
 
 // Create New User
 Route::post('/users', [UserController::class, 'store']);
@@ -65,6 +67,20 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 // Log In User
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
+// Show QR Page
+Route::get('/qr', [QRformController::class, 'show']);
+
+// Registered Data
+Route::get('/qr/register', [QRformController::class, 'create'])->middleware('guest');
+
+// Store Register Data
+Route::post('/qr/store', [QRformController::class, 'store'])->middleware('guest');
+
+// Redirect to Download Page
+Route::get('/qr/download', [QRformController::class, 'download'])->middleware('guest');
+
+// Download PDF
+Route::get('/qr/generatePDF', [QRformController::class, 'generatePDF'])->middleware('guest');
 
 // // Listing All
 // Route::get('/', function () {
