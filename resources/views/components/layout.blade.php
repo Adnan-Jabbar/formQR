@@ -46,8 +46,11 @@
                     </span>
                 </li>
                 <li>
-                    <a href="/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
+                    <a href="/listings" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Listings</a>
                 </li>
+                {{-- <li>
+                    <a href="/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
+                </li> --}}
                 {{-- <li>
                     <a href="/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
                 </li> --}}

@@ -32,22 +32,22 @@ use App\Http\Controllers\ListingController;
 Route::get('/', [QRformController::class, 'show']);
 
 // Show Create Form
-Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
+// Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 
 // Store Listing Data
-Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
+// Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
 // Show Edit Form
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
+// Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
 // Update Listing
-Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
+// Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
 
 // Update Listing
-Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
+// Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
 
 // Manage Listings
-Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
+// Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
 
 // Single Listing
 // Route::get('/listings/{listing}', [ListingController::class, 'show']);
@@ -81,6 +81,10 @@ Route::get('/qr/download', [QRformController::class, 'download'])->middleware('g
 
 // Download PDF
 Route::get('/qr/generatePDF', [QRformController::class, 'generatePDF'])->middleware('guest');
+
+Route::get('/listings', [ListingController::class, 'showData']);
+
+Route::get('/listings/list', [ListingController::class, 'getData'])->name('data.list');
 
 // // Listing All
 // Route::get('/', function () {

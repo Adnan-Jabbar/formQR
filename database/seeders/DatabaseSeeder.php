@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Listing;
+use App\Models\QrForm;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -33,6 +34,8 @@ class DatabaseSeeder extends Seeder
         Listing::factory(6)->create([
             'user_id' => $user->id
         ]);
+
+        QrForm::factory(20)->create();
     
         // Listing::create([
         //     'title' => 'Laravel Senior Developer', 

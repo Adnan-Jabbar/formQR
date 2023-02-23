@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DataTables;
+use App\Models\QrForm;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -105,5 +107,26 @@ class ListingController extends Controller
     public function manage() {
         // return view('listings.manage', ['listings' => auth()->user()->listings()->get()]);
         return view('listings.manage', ['listings' => auth()->user()->listings()->paginate(4)]);
+    }
+
+    //Show single listing
+    public function showData(Listing $listing)
+    {
+        return view('listings.data-listing');
+    }
+
+    public function getData(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = QrForm::latest()->get();
+            return Datatables::of($data)
+                // ->addIndexColumn()
+                // ->addColumn('action', function($row){
+                //     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                //     return $actionBtn;
+                // })
+                // ->rawColumns(['action'])
+                ->make(true);
+        }
     }
 }
